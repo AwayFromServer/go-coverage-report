@@ -42,7 +42,9 @@ if [[ $# == 2 ]]; then
   SHA256SUM=$2
 fi
 
-sudo_or_dry_run="sudo"
+if [[ $USER != "root" ]]; then
+  sudo_or_dry_run="sudo";
+fi
 if [[ "$DRY_RUN" == "true" ]]; then
   sudo_or_dry_run='echo [DRY-RUN]: sudo'
 fi
